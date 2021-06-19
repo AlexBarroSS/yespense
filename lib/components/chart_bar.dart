@@ -39,16 +39,21 @@ class ChartBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
-              FractionallySizedBox(
-                heightFactor: percentage,
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1.0,
+              Padding(
+                padding: percentage < 0.1
+                    ? const EdgeInsets.only(bottom: 5)
+                    : EdgeInsets.all(0),
+                child: FractionallySizedBox(
+                  heightFactor: percentage,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                      color: Theme.of(context).primaryColor,
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),

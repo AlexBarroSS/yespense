@@ -46,61 +46,59 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Card(
-        elevation: 5,
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _titleController,
-                decoration: InputDecoration(
-                  labelText: 'Título',
+    return Card(
+      elevation: 5,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: _titleController,
+              decoration: InputDecoration(
+                labelText: 'Título',
+              ),
+              onSubmitted: (_) => submitForm(),
+            ),
+            TextField(
+              controller: _valueController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              decoration: InputDecoration(
+                labelText: 'Valor (R\$)',
+              ),
+              onSubmitted: (_) => submitForm(),
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    "Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate)}",
+                  ),
                 ),
-                onSubmitted: (_) => submitForm(),
-              ),
-              TextField(
-                controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(
-                  labelText: 'Valor (R\$)',
+                TextButton(
+                  child: Text(
+                    'Selecione a data',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  onPressed: _showDatePicker,
                 ),
-                onSubmitted: (_) => submitForm(),
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      "Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate)}",
-                    ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                ElevatedButton(
+                  child: Text(
+                    'Nova transação',
+                    style: Theme.of(context).textTheme.button,
                   ),
-                  TextButton(
-                    child: Text(
-                      'Selecione a data',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    onPressed: _showDatePicker,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  ElevatedButton(
-                    child: Text(
-                      'Nova transação',
-                      style: Theme.of(context).textTheme.button,
-                    ),
-                    onPressed: submitForm,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                  onPressed: submitForm,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
