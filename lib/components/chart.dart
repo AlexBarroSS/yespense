@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:yespense/components/chart_bar.dart';
 import 'package:yespense/model/transactions.dart';
 
 class Chart extends StatelessWidget {
@@ -41,7 +42,13 @@ class Chart extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Row(
         children: groupedTransactions
-            .map((e) => Text("${e['day']}: ${e['value']}"))
+            .map(
+              (tr) => ChartBar(
+                label: (tr['day'] as String),
+                value: (tr['value'] as double),
+                percentage: 0,
+              ),
+            )
             .toList(),
       ),
     );
