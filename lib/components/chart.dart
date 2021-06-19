@@ -29,27 +29,37 @@ class Chart extends StatelessWidget {
 
       return {
         'day': DateFormat.E().format(weekly)[0],
-        'value': 9.95,
+        'value': totalSoma,
       };
+    }).reversed.toList();
+  }
+
+  double get _weekTotalValue {
+    return groupedTransactions.fold(0.0, (tot, item) {
+      return tot + (item['value'] as double);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    groupedTransactions;
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactions
-            .map(
-              (tr) => ChartBar(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactions.map((tr) {
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
                 label: (tr['day'] as String),
                 value: (tr['value'] as double),
-                percentage: 0.5,
+                percentage: (tr['value'] as double) / _weekTotalValue,
               ),
-            )
-            .toList(),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
