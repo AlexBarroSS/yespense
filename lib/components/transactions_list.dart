@@ -4,8 +4,9 @@ import 'package:yespense/model/transactions.dart';
 
 class TransactionsList extends StatelessWidget {
   final List<Transaction> transactionList;
+  late final void Function(String) onDelete;
 
-  TransactionsList(this.transactionList);
+  TransactionsList(this.transactionList, this.onDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,11 @@ class TransactionsList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       DateFormat('d MMM y').format(transaction.date),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () => onDelete(transaction.id),
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
                     ),
                   ),
                 );
