@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yespense/components/transaction_item.dart';
 import 'package:yespense/model/transactions.dart';
 
 import 'transaction_item.dart';
