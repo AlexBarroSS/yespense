@@ -39,16 +39,5 @@ class TransactionsList extends StatelessWidget {
               );
             }).toList(),
           );
-    // ListView.builder(
-    //     itemCount: transactionList.length,
-    //     itemBuilder: (itens, index) {
-    //       final transaction = transactionList[index];
-
-    //       return TransactionItem(
-    //         transaction: transaction,
-    //         onDelete: onDelete,
-    //       );
-    //     },
-    //   );
   }
 }
