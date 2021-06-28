@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
 
     if (_isIOS) {
       appBar = CupertinoNavigationBar(
-        middle: Text("Despesas Pessoais"),
+        middle: const Text("Despesas Pessoais"),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: actions,
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Exibir Gráfico"),
+                  const Text("Exibir Gráfico"),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,
